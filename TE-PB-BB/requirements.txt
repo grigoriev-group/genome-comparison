@@ -1,0 +1,12 @@
+# bear_genomics — Python dependencies
+# Install with:  pip install -r requirements.txt
+# For HPC/conda users see README.md § Environment Setup
+
+# Core data stack
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+scikit-learn>=1.3
+
+# Bioinformatics
+pyyaml>=6.0

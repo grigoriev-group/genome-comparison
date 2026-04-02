@@ -1,0 +1,90 @@
+# polar_ref_template.yaml
+# Bear genomics SV analysis — polar reference genome
+# Annotates: brown-specific deletions (non-reference set)
+#
+# Usage: python -m bear_genomics.analysis_pipeline --config polar_ref_template.yaml
+
+# ============================================================================
+# PROJECT IDENTIFICATION
+# ============================================================================
+project_name: "bear_genomics"
+output_folder: /path/to/output/polar_ref_run
+
+# ============================================================================
+# INPUT DATA
+# ============================================================================
+brown_vcf_folder: /path/to/brown_vcfs
+polar_vcf_folder: /path/to/polar_vcfs
+
+reference_genome_path: /path/to/reference.fna
+gff_file:              /path/to/annotation.gff
+repeatmasker_bed:      /path/to/repeatmasker.bed  # optional
+
+# ============================================================================
+# REFERENCE GENOME
+# ============================================================================
+reference_genome: "polar"   # drives which set is annotated (brown_specific)
+
+# ============================================================================
+# CORE ANALYSIS PARAMETERS
+# ============================================================================
+min_qual:   20.0
+min_size:   40
+max_size:   1000000
+
+tolerance_bp:          50
+overlap_threshold:     0.3
+clustering_strategy:   "adaptive"
+
+brown_min_samples: 5    # min samples a deletion must appear in (brown cohort)
+polar_min_samples: 1    # min samples a deletion must appear in (polar cohort)
+
+threads:     8
+max_workers: 8
+chunk_size:  10000
+
+# ============================================================================
+# GENE ANNOTATION
+# ============================================================================
+nearby_threshold: 5000
+
+gene_annotation_settings:
+  include_overlapping:   true
+  include_nearby:        true
+  gene_name_field:       "gene"
+  feature_types:
+    - "gene"
+    - "mRNA"
+    - "transcript"
+    - "CDS"
+    - "exon"
+    - "five_prime_UTR"
+    - "three_prime_UTR"
+  strand_specific:       false
+  max_genes_per_variant: 15
+
+reference_aware_annotation:
+  enable: true
+
+annotation_output:
+  include_gene_details:        true
+  include_distance_info:       true
+  include_strand_info:         true
+  separate_nearby_overlapping: true
+
+# ============================================================================
+# CLUSTERING QUALITY FILTERS
+# ============================================================================
+clustering_quality_filters:
+  max_rssd:              0       # 0 = disabled
+  max_size_stdev:        0       # 0 = disabled
+  min_quality_fraction:  0.0
+  species_overrides:
+    brown:
+      max_rssd: 0
+      max_size_stdev: 0
+      min_quality_fraction: 0
+    polar:
+      max_rssd: 0
+      max_size_stdev: 0
+      min_quality_fraction: 0
