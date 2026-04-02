@@ -26,6 +26,7 @@ Whole-genome sequencing reads for all samples were aligned to both the polar bea
 ### 2. Variant Calling: GROM
 
 Each sample was analyzed against both reference genomes independently.
+Note, the BAM file must be sorted by coordinate and indexed.
 
 | Parameter | Value |
 |-----------|-------|
