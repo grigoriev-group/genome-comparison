@@ -8,7 +8,7 @@
 
 **Transposable Element Analysis — Polar Bear & Brown Bear**
 
-Code for the structural variant (deletion) analysis pipeline used in:
+Code for the structural variant (deletion/insertion) analysis pipeline used in:
 
 > "Recent Dominant Transposition Events Affect Gene Regulatory Regions but Not Coding Sequences in Polar and Brown Bear Genomes" *(in preparation)*
 
